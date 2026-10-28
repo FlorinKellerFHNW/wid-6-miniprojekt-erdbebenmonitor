@@ -1,17 +1,22 @@
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 import { Map } from "./Map";
+import { useState } from "react";
 
 import "./App.css";
 import "leaflet/dist/leaflet.css";
 
 function App() {
+
+  const [earthquakes, setEarthquakes] = useState({});
+  console.log(earthquakes);
+
   return (
     <div className="app">
       <Header />
-      <Sidebar />
+      <Sidebar earthquakes={earthquakes} />
       <div className="mainArea">
-        <Map />
+        <Map setEarthquakes={setEarthquakes} />
       </div>
     </div>
   );
