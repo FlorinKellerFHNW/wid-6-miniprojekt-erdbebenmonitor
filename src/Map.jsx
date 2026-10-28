@@ -2,9 +2,9 @@ import { MapContainer, TileLayer, CircleMarker, Popup, GeoJSON } from "react-lea
 
 import data from "./assets/4.5_week.geojson.json";
 import boundaries from "./assets/plate_boundaries.geojson.json";
+import Button from "@mui/material/Button";
 
-
-export const Map = ({ setEarthquakes }) => {
+export const Map = ({ setEarthquakes, size }) => {
   const earthquakes = data.features; // Wir benötigen nur den Feature-Array aus den Daten
 
   return (
@@ -26,13 +26,13 @@ export const Map = ({ setEarthquakes }) => {
         <CircleMarker
           key={i}
           center={[d.geometry.coordinates[1], d.geometry.coordinates[0]]}
-          radius={d.properties.mag ** 1.5}
+          radius={d.properties.mag ** size}
           pathOptions={{ color: "red" }}
         >
           <Popup>
             <div style={{ textAlign: "center" }}>
               {d.properties.title} <br />
-              <button onClick={() => setEarthquakes(d)}>Details</button>
+              <Button variant="contained" color="primary" size="small" onClick={() => setEarthquakes(d)}>Details</Button>
             </div>
           </Popup>
         </CircleMarker>

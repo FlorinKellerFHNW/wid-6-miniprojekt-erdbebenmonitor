@@ -10,13 +10,14 @@ function App() {
 
   const [earthquakes, setEarthquakes] = useState({});
   console.log(earthquakes);
+  const [size, setSize] = useState(1);
 
   return (
     <div className="app">
       <Header />
-      <Sidebar earthquakes={earthquakes} />
+      <Sidebar earthquakes={earthquakes} size={size} setSize={setSize} />
       <div className="mainArea">
-        <Map setEarthquakes={setEarthquakes} />
+        <Map setEarthquakes={setEarthquakes} size={size} />
       </div>
     </div>
   );
