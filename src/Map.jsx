@@ -1,11 +1,10 @@
 import { MapContainer, TileLayer, CircleMarker, Popup, GeoJSON } from "react-leaflet";
 
-import data from "./assets/4.5_week.geojson.json";
 import boundaries from "./assets/plate_boundaries.geojson.json";
 import Button from "@mui/material/Button";
 
-export const Map = ({ setEarthquakes, size }) => {
-  const earthquakes = data.features; // Wir benötigen nur den Feature-Array aus den Daten
+export const Map = ({ setEarthquakes, size, quakeData }) => {
+  const earthquakes = quakeData.features || []; // Wir benötigen nur den Feature-Array aus den Daten
 
   return (
     <MapContainer
